@@ -1,0 +1,351 @@
+/* Global Styles & Body Layout */
+body {
+    font-family: 'Arial', sans-serif; /* Standard sans-serif font */
+    background-color: #1a1a1a;       /* Dark background */
+    color: #ffffff;                   /* Light text color */
+    margin: 0;                        /* Remove default body margin */
+    padding: 20px;                    /* Add some padding around content */
+    display: flex;                    /* Enable flexbox layout */
+    flex-direction: column;           /* Stack elements vertically */
+    align-items: center;              /* Center content horizontally */
+    min-height: 100vh;                /* Ensure body takes at least full viewport height */
+}
+
+/* Main Heading Style */
+h1 {
+    font-size: 3rem;                  /* Large font size for main title */
+    margin-bottom: 30px;              /* Space below the title */
+    text-shadow: 0 0 10px #00ffff;    /* Neon glow effect */
+    text-align: center;               /* Ensure heading is centered */
+}
+
+/* General Control Section Styling */
+.control-section {
+    margin-top: 30px;                 /* Space above control sections */
+    width: 100%;                      /* Allow sections to take width */
+    max-width: 600px;                 /* Limit max width for better layout on large screens */
+    display: flex;                    /* Use flexbox for layout within sections */
+    flex-direction: column;           /* Stack items vertically */
+    align-items: center;              /* Center items horizontally */
+}
+
+/* Instructions Button Style (Fixed Position) */
+.instructions-button {
+    position: fixed;                  /* Fix position relative to viewport */
+    top: 20px;                        /* Distance from top */
+    right: 20px;                       /* Distance from right */
+    padding: 10px 15px;               /* Padding inside the button */
+    background-color: #00ffff;        /* Neon cyan background */
+    color: #000;                      /* Black text */
+    border: none;                     /* Remove default border */
+    border-radius: 5px;               /* Rounded corners */
+    cursor: pointer;                  /* Pointer cursor on hover */
+    font-size: 1rem;                  /* Standard font size */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    z-index: 100;                     /* Ensure it stays above other content */
+}
+
+.instructions-button:hover {
+    background-color: #00cccc;        /* Darker cyan on hover */
+    transform: scale(1.05);           /* Slightly enlarge on hover */
+}
+
+/* Drum Pad Container (Grid Layout) */
+.container {
+    display: grid;                    /* Use grid layout */
+    grid-template-columns: repeat(5, 1fr); /* Create equal columns */
+    gap: 20px;                        /* Space between grid items (buttons) */
+    margin-bottom: 30px;              /* Space below the drum pads */
+    width: 100%;                      /* Container takes available width */
+    max-width: 840px;                 /* Limit max width for better centering */
+    justify-items: center;            /* Center items horizontally */
+}
+
+/* General Button Styles (Drum pads, Play, Record etc.) */
+button {
+    cursor: pointer;                  /* Pointer cursor for all buttons */
+    border: none;                     /* Remove default border */
+    border-radius: 10px;              /* Rounded corners */
+    font-size: 1rem;                  /* Default font size */
+    transition: all 0.1s ease;        /* Smooth transition for all properties */
+    color: #000;                      /* Default text color (black) */
+    background-color: #00ffff;        /* Default background (cyan) */
+    padding: 10px 15px;               /* Default padding */
+}
+
+/* Specific Styles for Drum Pad Buttons */
+.container button {
+    width: 150px;                     /* Fixed width */
+    height: 150px;                    /* Fixed height */
+    background-color: #333;           /* Dark grey background */
+    color: #ffffff;                   /* White text */
+    font-weight: bold;                /* Make text bolder */
+    display: flex;                    /* Use flexbox for content alignment */
+    flex-direction: column;           /* Stack content vertically */
+    align-items: center;              /* Center content horizontally */
+    justify-content: flex-end;        /* Align text to the bottom */
+    padding: 10px;                    /* Padding inside the button */
+    background-size: cover;           /* Scale background image to cover */
+    background-position: center 20%;  /* Position background image slightly higher */
+    background-repeat: no-repeat;     /* Prevent background image tiling */
+    /* Black outline using text-shadow */
+    text-shadow:
+       -1px -1px 0 #000, /* Top-left */
+        1px -1px 0 #000, /* Top-right */
+       -1px  1px 0 #000, /* Bottom-left */
+        1px  1px 0 #000; /* Bottom-right */
+}
+
+/* Drum Pad Button Hover State */
+.container button:hover {
+    background-color: #444;           /* Lighter grey on hover */
+    transform: scale(1.05);           /* Slightly enlarge */
+}
+
+/* Drum Pad Button Active/Playing State */
+.container button:active,
+.container button.playing {
+    background-color: #00ffff;        /* Bright cyan background */
+    color: #000;                      /* Black text */
+    transform: scale(0.95);           /* Slightly shrink */
+    box-shadow: 0 0 20px #00ffff;     /* Neon glow effect */
+}
+
+/* Specific Background Images for Drum Pad Buttons */
+#kick { background-image: url('images/kick.jpg'); }
+#ride { background-image: url('images/ride.jpg'); }
+#snare { background-image: url('images/snare.jpg'); }
+#tom { background-image: url('images/tom.jpg'); }
+#hihat { background-image: url('images/hihat.jpg'); }
+#clap { background-image: url('images/clap.jpg'); }
+#openhat { background-image: url('images/open hihat.jpeg'); }
+#tink { background-image: url('images/tink.jpg'); }
+#boom { background-image: url('images/boom.jpg'); }
+
+
+/* Volume Control Styles */
+#controls {
+    align-items: center; /* Center label and slider */
+    margin-bottom: 20px; /* Space below volume control */
+}
+
+#controls label {
+    margin-right: 10px; /* Space between label and slider */
+}
+
+input[type="range"] {
+    width: 200px;                     /* Width of the slider track */
+    margin: 0;                        /* Reset margin if needed */
+    height: 20px;                     /* Height of the slider track */
+    cursor: pointer;                  /* Pointer cursor */
+    -webkit-appearance: none;         /* Override default look in WebKit */
+    appearance: none;                 /* Override default look */
+    background: #333;                 /* Dark track background */
+    outline: none;                    /* Remove default outline */
+    border-radius: 15px;              /* Rounded track */
+    overflow: hidden;                 /* Hide overflowing parts (for thumb trick) */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Inner shadow for depth */
+}
+
+/* Volume Slider Thumb Style (WebKit) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;         /* Override default look */
+    appearance: none;                 /* Override default look */
+    width: 20px;                      /* Thumb width */
+    height: 20px;                     /* Thumb height */
+    border-radius: 50%;               /* Make thumb circular */
+    background: #00ffff;              /* Cyan thumb color */
+    border: 4px solid #333;           /* Border matching track background */
+    /* Trick to color the track progress */
+    box-shadow: -407px 0 0 400px #00ffff;
+}
+
+/* Volume Slider Thumb Style (Mozilla) - Add if needed */
+/* input[type="range"]::-moz-range-thumb { ... } */
+/* input[type="range"]::-moz-range-progress { ... } */
+
+
+/* Sequencer Styles */
+#sequencer-container {
+    margin-top: 30px;                 /* Space above the sequencer */
+}
+
+#sequencer {
+    display: grid;                    /* Use grid for rows */
+    gap: 10px;                        /* Space between instrument rows */
+    margin-top: 15px;                 /* Space below the sequencer title */
+    margin-bottom: 20px;              /* Space above the play button */
+}
+
+.sequencer-row {
+    display: flex;                    /* Use flexbox for beats within a row */
+    gap: 10px;                         /* Space between beats in a row */
+    justify-content: center;          /* Center beats horizontally */
+}
+
+.sequencer-beat {
+    width: 40px;                      /* Beat button width */
+    height: 40px;                     /* Beat button height */
+    border: 2px solid #00ffff;        /* Cyan border */
+    background-color: transparent;    /* Transparent background initially */
+    border-radius: 5px;               /* Slightly rounded corners */
+    padding: 0;                       /* Remove padding for square shape */
+    transition: background-color 0.1s ease; /* Smooth background transition */
+}
+
+/* Active State for Sequencer Beats */
+.sequencer-beat.active {
+    background-color: #00ffff;        /* Fill with cyan when active */
+}
+
+/* Sequencer Play/Stop Button Style */
+#playButton {
+    /* Uses general button styles */
+    margin-top: 20px;                 /* Space above the button */
+}
+
+#playButton:hover {
+    background-color: #00cccc;        /* Darker cyan on hover */
+}
+
+
+/* Recording Controls Styles */
+#recording-controls {
+    margin-top: 40px;                 /* Space above recording controls */
+    margin-bottom: 20px;              /* Space below recording controls */
+    display: flex;                    /* Use flexbox for horizontal layout */
+    flex-direction: row;              /* Stack buttons horizontally */
+    justify-content: center;          /* Center buttons */
+    gap: 20px;                        /* Space between recording buttons */
+}
+
+/* Individual Recording Button Styling */
+#recording-controls button {
+    /* Uses general button styles */
+    min-width: 100px;                 /* Ensure buttons have a minimum width */
+    text-align: center;
+}
+
+#recording-controls button:hover {
+    background-color: #00cccc;        /* Darker cyan on hover */
+}
+
+/* Disabled State for Recording Buttons */
+#recording-controls button:disabled {
+    background-color: #cccccc;        /* Grey background when disabled */
+    color: #666666;                   /* Darker grey text */
+    cursor: not-allowed;              /* Indicate non-interactive state */
+    transform: none;                  /* Disable hover/active transforms */
+    box-shadow: none;                 /* Disable hover/active shadows */
+}
+
+/* Specific Style for Record Button when Actively Recording */
+#recordButton.recording {
+    background-color: #ff0000;        /* Red background */
+    color: #ffffff;                   /* White text */
+    animation: pulse 1s infinite;     /* Pulsing animation */
+}
+
+/* Pulsing animation for recording button */
+@keyframes pulse {
+    0% { box-shadow: 0 0 5px #ff0000; }
+    50% { box-shadow: 0 0 20px #ff0000; }
+    100% { box-shadow: 0 0 5px #ff0000; }
+}
+
+
+/* Responsive Design Adjustments */
+
+/* Medium Screens (e.g., Tablets) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem; /* Slightly smaller heading */
+    }
+
+    .container {
+        grid-template-columns: repeat(3, 1fr); /* Keep 3 columns, but items shrink */
+        max-width: 400px; /* Adjust max width */
+    }
+
+    .container button {
+        width: 100px;     /* Smaller drum pads */
+        height: 100px;
+        font-size: 0.9rem;/* Smaller text on pads */
+    }
+
+    .sequencer-beat {
+        width: 35px;      /* Slightly smaller sequencer beats */
+        height: 35px;
+    }
+
+    input[type="range"] {
+        width: 180px;     /* Slightly narrower volume slider */
+    }
+
+     #recording-controls {
+        flex-wrap: wrap; /* Allow buttons to wrap if needed */
+        gap: 10px;
+    }
+}
+
+/* Small Screens (e.g., Mobile Phones) */
+@media (max-width: 480px) {
+    body {
+        padding: 15px; /* Reduce body padding */
+    }
+
+    h1 {
+        font-size: 2rem;  /* Smaller heading */
+    }
+
+    .instructions-button {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .container {
+        grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns */
+        gap: 10px;
+        max-width: 250px; /* Adjust max width */
+    }
+
+    .container button {
+        width: 90px;      /* Smaller drum pads */
+        height: 90px;
+        font-size: 0.8rem;/* Smaller text */
+    }
+
+    #sequencer {
+        gap: 5px; /* Reduce gap between rows */
+    }
+
+    .sequencer-row {
+        gap: 3px; /* Reduce gap between beats */
+    }
+
+    .sequencer-beat {
+        width: 30px;      /* Smaller sequencer beats */
+        height: 30px;
+        border-width: 1px;
+    }
+
+    #controls label {
+        font-size: 0.9rem;
+    }
+
+    input[type="range"] {
+        width: 150px;     /* Narrower volume slider */
+    }
+
+    #recording-controls {
+        gap: 8px; /* Reduce gap between recording buttons */
+    }
+
+    #recording-controls button {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        min-width: 80px;
+    }
+}
